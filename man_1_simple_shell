@@ -1,25 +1,14 @@
-TH man 8 "05 April 2019" "1.0" "shell man page"
+.TH man 8 "05 April 2019" "1.0" "shell man page"
 .SH NAME
 sh - a command programming language that executes commands read from a terminal or a file.
 .SH SYNOPSIS
 Simple Shell
-
 .SH DESCRIPTION
 A shell is a program which provides a user interface. Users can type in commands and run programs on a Unix system.T he main function a shell performs is to read in from the terminal what one types, run the commands, and show the output of the commands.
-
-
-
 .SH FLAGS
-
-
 .SH SEE ALSO
-
-
-
 .SH BUGS
 No known bugs.
-
-
 .SH AUTHORS
 Amber McBride <658@holbertonschool.com>
 Grayson Stiegler <682@holbertonschool.com>
