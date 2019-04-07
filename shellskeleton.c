@@ -26,30 +26,48 @@ int main(void)
 	c = 0;/*used to hold number of characters recieved by getline*/
 	/**
 	*I think the below code needs to be in a loop.
-	*I could be wrong but that is the only way I can think to 
+	*I could be wrong but that is the only way I can think to
 	*get the prompt to keep repeating. I could be wrong
 	*/
 	buf = NULL;/*used to hold line*/
-	write(STDOUT_FILENO, "$ ", 2);/*prints $ in terminal*/
-	c = getline(&buf, &l, stdin);/*gets input from user*/
-	if (c > 1)/*if there is input fork*/
+	while(1)
 	{
-		pid = fork();/*this is where the fork happens*/
-		if(pid == 0)/*if child process*/
+		write(STDOUT_FILENO, "$ ", 2);/*prints $ in terminal*/
+		c = getline(&buf, &l, stdin);/*gets input from user*/
+		if (strcmp(buf, e) == 0)
 		{
-			execve(argv[0], argv, NULL);
+			break;
+		}
+
+		if (c > 1)/*if there is input fork*/
+		{
+
+			pid = fork();/*this is where the fork happens*/
+			if(pid == 0)/*if child process*/
+			{
+				if (strcmp(buf,e) == 0)
+				{
+					break;
+				}
+				write(STDOUT_FILENO, buf, c);
 			/**
 			*the current code prints list
 			*no matter what is entered into
 			*prompt line. this was a test
 			*there needs to be additional
-			*code added here that will do 
+			*code added here that will do
 			*the work of the shell
 			*/
 		}
 		else if (pid > 0)/*if parent process wait for child*/
 		{
 			wait(&status);/*tells parent to wait until child is finished*/
+			if (strcmp(buf, e) == 0)
+			{
+				break;
+			}
+
+		}
 		}
 	}
 	else/*if fork did not occur*/
