@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
 /**
 *main- program to print a $ and wait to recieve input
 *
@@ -15,66 +16,86 @@
 */
 int main(void)
 {
-	char *buf;
+	char *buf, *token;
+	char *e = "exit\n";
 	size_t l, c;
 	pid_t pid;
 	int status;
-	/*the char array below is where the exec func is getting it's path to execute*/
-	char *argv[] = {"/bin/ls", "-l", "/home/vagrant/simple_shell/", NULL};
+	
+	/*the char array below is where the exec func is getting it's
+	 path to execute*/
+	
+	/*char *const*argv[] = {"/bin/ls", "-l", 
+	"/home/vagrant/simple_shell/", NULL};*/
 
+	
 	l = 0;/*used for length of line recieved from input*/
 	c = 0;/*used to hold number of characters recieved by getline*/
 	/**
 	*I think the below code needs to be in a loop.
-	*I could be wrong but that is the only way I can think to
+	*I could be wrong but that is the only way I can think to 
 	*get the prompt to keep repeating. I could be wrong
 	*/
-	buf = NULL;/*used to hold line*/
-	while(1)
+	/*buf = NULL;*//*used to hold line*/
+	while (1){
+	buf = NULL;
+	write(STDOUT_FILENO, "$ ", 2);/*prints $ in terminal*/
+	c = getline(&buf, &l, stdin);/*gets input from user*/
+	/*if (strcmp(buf, e) == 0)
 	{
-		write(STDOUT_FILENO, "$ ", 2);/*prints $ in terminal*/
-		c = getline(&buf, &l, stdin);/*gets input from user*/
-		if (strcmp(buf, e) == 0)
+		exit (1);
+	}*/
+
+	if (c > 1)/*if there is input fork*/
+	{
+		pid = fork();/*this is where the fork happens*/
+		printf("for returned: %d\n", (int)pid);
+		token = strtok(buf, " ");
+		if (strcmp(token, e) == 0)
 		{
-			break;
+			exit(1);
 		}
-
-		if (c > 1)/*if there is input fork*/
+		/*pid = fork();*//*this is where the fork happens*/
+		if (pid == 0)/*if child process*/
 		{
-
-			pid = fork();/*this is where the fork happens*/
-			if(pid == 0)/*if child process*/
+			/*if (strcmp(buf, e) == 0)
 			{
-				if (strcmp(buf,e) == 0)
-				{
-					break;
-				}
-				write(STDOUT_FILENO, buf, c);
+				flag += 1;
+				exit (1);
+			}*/
+			write(STDOUT_FILENO, token, c);
+			execvpe(token[0], token, NULL);
 			/**
 			*the current code prints list
 			*no matter what is entered into
 			*prompt line. this was a test
 			*there needs to be additional
-			*code added here that will do
+			*code added here that will do 
 			*the work of the shell
 			*/
+			printf("\nI am the child");
 		}
-		else if (pid > 0)/*if parent process wait for child*/
+		if (pid > 0)/*if parent process wait for child*/
 		{
-			wait(&status);/*tells parent to wait until child is finished*/
-			if (strcmp(buf, e) == 0)
+			/*if (flag == 1)
 			{
-				break;
+				exit (1);
 			}
 
+			if (strcmp(buf, e) == 0)
+			{
+				exit (1);
+			}*/
+			waitpid(-1, &status, 0);/*tells parent to wait until 
+					child is finished*/
+			continue;
 		}
+
+				
 		}
-	}
-	else/*if fork did not occur*/
-	{
-		write(STDOUT_FILENO, "No data entered\n", 16);
 	}
 	free(buf);/*used to free memory allocated by getline*/
-	printf("%ld\n", (long)c);/*this will print number of characters*/
+	/*printf("%ld\n", (long)c);*/    /*this will print number of 
+				          characters*/
 	return(c);/*number of characters recieved*/
 }
