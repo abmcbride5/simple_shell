@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include "shell.h"
 int main(void)
 {
 	char *buf;
@@ -35,6 +36,8 @@ int main(void)
 			pid = fork();
 			if (pid == 0)
 			{
+				if (_strcmp(buf, e) == 0)
+					exit (1);
 				write(STDOUT_FILENO, buf, c);
 				execve(buf, gg, NULL);
 			}
