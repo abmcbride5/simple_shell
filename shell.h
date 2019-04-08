@@ -12,3 +12,4 @@
 
 int main(__attribute__((unused)) int argc, char *argv[]);
 int _strcmp(char *str1, char *str2);
+int _putchar(char c)
