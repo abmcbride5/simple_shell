@@ -13,10 +13,12 @@
 /*int main(__attribute__((unused)) int argc, char *argv[]);*/
 int _strcmp(char *str1, char *str2);
 int _putchar(char c);
-
-#endif
-=======
 char **_parseline(char *buf);
+<<<<<<< HEAD
 int _strcmp(char *str1, char *str2);
 int _putchar(char c);
 #endif /*SHELL_H*/
+=======
+ /*SHELL_H*/
+#endif
+>>>>>>> 7888dbd769e7e7f0c21c11bf9e3a8ec7dfa25af8
