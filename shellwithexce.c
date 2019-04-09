@@ -26,7 +26,11 @@ int main(void)
 		buf = NULL;
 		write(STDOUT_FILENO, "$ ", 2);
 		c = getline(&buf, &l, stdin);
-		if (strcmp(buf, e) ==0)
+		if(c == EOF || c == -1)
+		{
+			exit (1);
+		}	
+		if (_strcmp(buf, e) ==0)
 		{
 			exit (1);
 		}
@@ -43,7 +47,7 @@ int main(void)
 			}
 			if (pid > 0)
 			{
-				  if (strcmp(buf, e) == 0)
+				  if (_strcmp(buf, e) == 0)
 				  {
 				  exit (1);
 				  }
