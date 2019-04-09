@@ -15,7 +15,7 @@ int main(void)
 	ssize_t c;
 	pid_t pid;
 	int status;
-
+	int er;
 
 
 
@@ -43,13 +43,15 @@ int main(void)
 				if (_strcmp(buf, e) == 0)
 					exit (1);
 				write(STDOUT_FILENO, buf, c);
-				execve(buf, gg, NULL);
+				er = execve(buf, gg, NULL);
+				if (er == -1)
+					perror("./shell: No such file or directory found");
 			}
 			if (pid > 0)
 			{
 				  if (_strcmp(buf, e) == 0)
 				  {
-				  exit (1);
+					  exit (1);
 				  }
 				wait(&status); 
 					
