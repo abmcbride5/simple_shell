@@ -1,4 +1,4 @@
-#include <stdio.h>
+OB#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stddef.h>
@@ -10,7 +10,7 @@ int main(void)
 {
 	char *buf;
 	char *e = "exit\n";
-	char *gg[] = {"", NULL};
+	char **gg = {"", NULL};
 	size_t l;
 	ssize_t c;
 	pid_t pid;
@@ -43,7 +43,8 @@ int main(void)
 				if (_strcmp(buf, e) == 0)
 					exit (1);
 				write(STDOUT_FILENO, buf, c);
-				er = execve(buf, gg, NULL);
+				gg = _parseline(buf);
+				er = execve(gg[0], gg, NULL);
 				if (er == -1)
 					perror("./shell: No such file or directory found");
 			}
