@@ -43,7 +43,7 @@ int main(void)
 				if (_strcmp(buf, e) == 0)
 					exit (1);
 				/*write(STDOUT_FILENO, buf, c);*/
-				gg = _parseline(buf);
+				gg = _parseline(buf, " ");
 				er = execve(gg[0], gg, NULL);
 				if (er == -1)
 					perror("./shell: No such file or directory found");
