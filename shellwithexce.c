@@ -58,19 +58,21 @@ int main(void)
 			}
 
 		}
+<<<<<<< HEAD
 	free(buf);
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> ecceca8f2c468e778f544fe097ce9b85a291513e
 	}
-	return(c);
-=======
+	free(buf);
 	return (c);
->>>>>>> e94cfc63dac34cc5f0a54b5b6aa7feef08977694
-=======
-	return (c);
+<<<<<<< HEAD
 =======
 	}
 	return(c);
 >>>>>>> 067857b02eab15e46810157ff651d87657ff7fa5
 >>>>>>> 2bb95e712182882547d1f0656de4185447448d76
+=======
+>>>>>>> ecceca8f2c468e778f544fe097ce9b85a291513e
 }
