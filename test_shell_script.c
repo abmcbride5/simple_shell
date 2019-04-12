@@ -4,8 +4,9 @@
 
 int main (void)
 {
-	string command;
-cout <<
+	char *string command;
+	int cout;
+	int cin; 
 
 		while (command != "exit")
 

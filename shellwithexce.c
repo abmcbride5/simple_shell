@@ -1,4 +1,4 @@
-OB#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stddef.h>
@@ -10,7 +10,7 @@ int main(void)
 {
 	char *buf;
 	char *e = "exit\n";
-	char **gg = {"", NULL};
+	char **gg;
 	size_t l;
 	ssize_t c;
 	pid_t pid;
@@ -42,7 +42,7 @@ int main(void)
 			{
 				if (_strcmp(buf, e) == 0)
 					exit (1);
-				write(STDOUT_FILENO, buf, c);
+				/*write(STDOUT_FILENO, buf, c);*/
 				gg = _parseline(buf);
 				er = execve(gg[0], gg, NULL);
 				if (er == -1)
@@ -59,7 +59,7 @@ int main(void)
 			}
 
 		}
-	}
 	free(buf);
+	}
 	return(c);
 }
