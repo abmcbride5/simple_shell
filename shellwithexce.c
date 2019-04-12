@@ -26,15 +26,15 @@ int main(void)
 		buf = NULL;
 		write(STDOUT_FILENO, "$ ", 2);
 		c = getline(&buf, &l, stdin);
-		if(c == EOF || c == -1)
-		{
-			exit (1);
-		}	
-		if (_strcmp(buf, e) ==0)
+		if (c == EOF || c == -1)
 		{
 			exit (1);
 		}
-		buf[c-1] = '\0';
+		if (_strcmp(buf, e) == 0)
+		{
+			exit (1);
+		}
+		buf[c - 1] = '\0';
 		if (c > 1)
 		{
 			pid = fork();
@@ -54,12 +54,15 @@ int main(void)
 				  {
 					  exit (1);
 				  }
-				wait(&status); 
-					
+				wait(&status);
 			}
 
 		}
 	free(buf);
+<<<<<<< HEAD
 	}
 	return(c);
+=======
+	return (c);
+>>>>>>> e94cfc63dac34cc5f0a54b5b6aa7feef08977694
 }
