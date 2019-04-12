@@ -58,11 +58,7 @@ int main(void)
 			}
 
 		}
-	free(buf);
-<<<<<<< HEAD
-	return (c);
-=======
 	}
-	return(c);
->>>>>>> 067857b02eab15e46810157ff651d87657ff7fa5
+	free(buf);
+	return (c);
 }
