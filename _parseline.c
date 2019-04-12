@@ -7,18 +7,18 @@
 *and save in an array of strings
 *
 *@buf - string recieved
-*@c - number of characters in a string
+*@delim - delim
 *
 *Return- pointer to new arrary of strings
 */
-char **_parseline(char *buf)
+char **_parseline(char *buf, char *delim)
 {
 	int i;
 	char *tokens;
 	char **args;
 
 	i = 0;
-	tokens = strtok(buf, " ");
+	tokens = strtok(buf, delim);
 	args = malloc(sizeof(char*));
 	while(tokens)
 	{

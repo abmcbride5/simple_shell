@@ -42,8 +42,8 @@ int main(void)
 			{
 				if (_strcmp(buf, e) == 0)
 					exit (1);
-				write(STDOUT_FILENO, buf, c);
-				gg = _parseline(buf);
+				/*write(STDOUT_FILENO, buf, c);*/
+				gg = _parseline(buf, " ");
 				er = execve(gg[0], gg, NULL);
 				if (er == -1)
 					perror("./shell: No such file or directory found");
@@ -58,7 +58,11 @@ int main(void)
 			}
 
 		}
-	}
 	free(buf);
+<<<<<<< HEAD
 	return (c);
+=======
+	}
+	return(c);
+>>>>>>> 067857b02eab15e46810157ff651d87657ff7fa5
 }
