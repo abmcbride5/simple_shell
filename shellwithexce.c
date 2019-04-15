@@ -8,16 +8,9 @@
 #include "shell.h"
 int main(void)
 {
-	char *buf;
-	char *e = "exit\n";
-	char **gg;
-	size_t l;
-	ssize_t c;
-	pid_t pid;
+	char *buf, char *e = "exit\n", char **gg, size_t l, ssize_t c, pid_t pid;
 	int status;
 	int er;
-
-
 
 	l = 0;
 	c = 0;
@@ -28,11 +21,11 @@ int main(void)
 		c = getline(&buf, &l, stdin);
 		if (c == EOF || c == -1)
 		{
-			exit (1);
+			exit(1);
 		}
 		if (_strcmp(buf, e) == 0)
 		{
-			exit (1);
+			exit(1);
 		}
 		buf[c - 1] = '\0';
 		if (c > 1)
@@ -41,7 +34,7 @@ int main(void)
 			if (pid == 0)
 			{
 				if (_strcmp(buf, e) == 0)
-					exit (1);
+					exit(1);
 				/*write(STDOUT_FILENO, buf, c);*/
 				gg = _parseline(buf, " ");
 				er = execve(gg[0], gg, NULL);
@@ -50,10 +43,10 @@ int main(void)
 			}
 			if (pid > 0)
 			{
-				  if (_strcmp(buf, e) == 0)
-				  {
-					  exit (1);
-				  }
+				if (_strcmp(buf, e) == 0)
+				{
+					exit(1);
+				}
 				wait(&status);
 			}
 
