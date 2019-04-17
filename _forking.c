@@ -24,7 +24,8 @@ void _forkIt(char *str)
 		er = execve(gg[0], gg, NULL);
 		if (er == -1)
 		{
-			perror("./shell: No such file or directory found");
+			write(STDERR_FILENO, gg[0], _strlen(gg[0]));
+			write(STDERR_FILENO, ": No such file or directory found \n", 36);
 			exit(1);
 		}
 	}
