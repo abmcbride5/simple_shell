@@ -1,7 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "shell.h"
 
 /**
@@ -40,10 +36,14 @@ char **_parseline(char *buf, char *delim)
 	int i;
 	char *tokens;
 	char **args;
+	char *buffer;
 
 	i = 0;
 	tokens = strtok(buf, delim);
-	args = malloc(sizeof(char *));
+	buffer = malloc(sizeof(char) * 1024);
+	buffer = buf;
+	c = _counter(buffer, delim);
+	args = malloc(sizeof(char *) * (c + 1));
 	while (tokens)
 	{
 		args[i] = tokens;
@@ -51,6 +51,7 @@ char **_parseline(char *buf, char *delim)
 		i++;
 	}
 	args[i] = NULL;
+	free(buffer);
 	return (args);
 }
 /**
@@ -86,4 +87,43 @@ void _forkIt(char *str)
 		}
 		wait(&status);
 	}
+}
+/**
+*_counter - function to count how many words a string has
+*
+*@buf: string to be parsedd
+*@delim: delimiter used
+*
+*Return: number of words parsed
+*/
+int _counter(char *buf, char *delim)
+{
+	int count;
+	char *tokens;
+
+	count = 1;
+	tokens = strtok(buf, delim);
+	while (tokens)
+	{
+		count++;
+		tokens = strtok(NULL, delim);
+	}
+	return (count);
+}
+/**
+*_strlen- function to calculate the length of a string
+*
+*@s: given string
+*
+*Return: length of string
+*/
+int _strlen(char *s)
+{
+	int r = 0;
+
+	while (s[r] != '\0')
+	{
+		r++;
+	}
+	return (r);
 }
