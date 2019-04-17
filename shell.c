@@ -11,14 +11,14 @@
 int main(void)
 {
 	char *buf = NULL;
-	char *e = "exit\n";
+	char *e = "exit";
 	size_t l = 0;
 	ssize_t c = 0;
-	char env[] = "env\n";
+	char *env = "env";
 
 	while (1)
 	{
-		write(STDOUT_FILENO," $  \n", 3);
+		write(STDOUT_FILENO,"$ ", 2);
 		c = getline(&buf, &l, stdin);
 		if (c == -1)
 		{
