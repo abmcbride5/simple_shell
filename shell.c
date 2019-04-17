@@ -30,7 +30,7 @@ int main(void)
 		}
 		if (_strcmp(buf, env) == 0)
 			printenv();
-		else if(c > 1)
+		else if (c > 1)
 		{
 			buf[c - 1] = '\0';
 			_forkIt(buf);
