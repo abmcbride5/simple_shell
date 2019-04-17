@@ -29,7 +29,7 @@ int main(void)
 			exit(1);
 		}
 		if (_strcmp(buf, env) == 0)
-			_printenv();
+			printenv();
 		buf[c - 1] = '\0';
 		if (c > 1)
 		{

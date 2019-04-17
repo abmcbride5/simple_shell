@@ -36,14 +36,10 @@ char **_parseline(char *buf, char *delim)
 	int i;
 	char *tokens;
 	char **args;
-	char *buffer;
 
 	i = 0;
 	tokens = strtok(buf, delim);
-	buffer = malloc(sizeof(char) * 1024);
-	buffer = buf;
-	c = _counter(buffer, delim);
-	args = malloc(sizeof(char *) * (c + 1));
+	args = malloc(sizeof(char *) * 1024);
 	while (tokens)
 	{
 		args[i] = tokens;
@@ -51,7 +47,6 @@ char **_parseline(char *buf, char *delim)
 		i++;
 	}
 	args[i] = NULL;
-	free(buffer);
 	return (args);
 }
 /**
