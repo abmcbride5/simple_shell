@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "shell.h"
 /**
-*main- program that creates a prompt, recieves input and calls
+*main - program that creates a prompt, recieves input and calls
 *forking function when needed.
 *
 *Return: void
@@ -14,6 +14,7 @@ int main(void)
 	char *e = "exit\n";
 	size_t l = 0;
 	ssize_t c = 0;
+	char env[] = "env";
 
 	while (1)
 	{
@@ -27,6 +28,8 @@ int main(void)
 		{
 			exit(1);
 		}
+		if (_strcmp(buf, env) == 0)
+			_printenv();
 		buf[c - 1] = '\0';
 		if (c > 1)
 		{

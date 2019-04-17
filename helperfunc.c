@@ -10,6 +10,8 @@
  * @str1: string 1
  *
  * @str2: string 2
+ *
+ * Return: _strcmp
  */
 int _strcmp(char *str1, char *str2)
 {
@@ -24,13 +26,14 @@ int _strcmp(char *str1, char *str2)
 }
 
 /**
- *function to take string as input and break words up into tokens 
+ * _parseline - function to take string as input and break words up into tokens
  *and save in an array of strings
  *
- *@buf - string recieved
- *@delim - delim
+ *@buf: string recieved
  *
- *Return- pointer to new arrary of strings
+ *@delim: delim
+ *
+ *Return: pointer to new arrary of strings
  */
 char **_parseline(char *buf, char *delim)
 {
@@ -40,8 +43,8 @@ char **_parseline(char *buf, char *delim)
 
 	i = 0;
 	tokens = strtok(buf, delim);
-	args = malloc(sizeof(char*));
-	while(tokens)
+	args = malloc(sizeof(char *));
+	while (tokens)
 	{
 		args[i] = tokens;
 		tokens = strtok(NULL, " ");
