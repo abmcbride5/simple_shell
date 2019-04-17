@@ -9,13 +9,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*int main(__attribute__((unused)) int argc, char *argv[]);*/
-int _strcmp(char *str1, char *str2);
 int _putchar(char c);
 char **_parseline(char *buf, char *delim);
 int _strcmp(char *str1, char *str2);
 int _putchar(char c);
-char *do_exit(char *str);
-int findpath(void);
+char *pathString(void);
 void _forkIt(char *str);
+int _counter(char *buf, char *delim);
+char **parsePath(void);
+int _strlen(char *s);
+void printenv(void);
+char *_strdup(char *org);
+char *_strcat(char *destination, const char *source, size_t num);
+
 #endif
