@@ -2,6 +2,14 @@
 #include <string.h>
 #include "shell.h"
 
+/**
+ * _strdup - _strdup dupliacte function
+ *
+ * @org:  input for org
+ *
+ * Return: dup
+ */
+
 char *_strdup(char *org)
 {
 	int org_size;
@@ -9,9 +17,9 @@ char *_strdup(char *org)
 	char *dup_offset;
 
 	org_size = strlen(org);
-	dup = (char *)malloc(sizeof(char) *org_size+1);
+	dup = (char *)malloc(sizeof(char) * org_size + 1);
 	if (dup == NULL)
-		return ((char*)NULL);
+		return ((char *)NULL);
 
 	dup_offset = dup;
 	while (*org)
@@ -22,5 +30,5 @@ char *_strdup(char *org)
 	}
 	*dup_offset = '\0';
 
-	return(dup);
+	return (dup);
 }
