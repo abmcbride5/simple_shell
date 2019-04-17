@@ -67,7 +67,7 @@ void _forkIt(char *str)
 	if (pid == 0)
 	{
 		gg = _parseline(str, " ");
-		er = execve(gg[0], gg, NULL);
+		er = execve(gg[0], gg, environ);
 		if (er == -1)
 		{
 			write(STDERR_FILENO, gg[0], _strlen(gg[0]));
