@@ -6,6 +6,8 @@ Simple Shell
 .SH DESCRIPTION
 A shell is a program which provides a user interface. Users can type in commands and run programs on a Unix system.T he main function a shell performs is to read in from the terminal what one types, run the commands, and show the output of the commands.
 .SH FLAGS
+ls
+
 .SH SEE ALSO
 .SH BUGS
 No known bugs.
