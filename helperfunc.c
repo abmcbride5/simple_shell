@@ -59,7 +59,6 @@ char **_parseline(char *buf, char *delim)
 void _forkIt(char *str)
 {
 	char **gg;
-	char *e = "exit\n";
 	pid_t pid;
 	int status = 0, er = 0;
 
@@ -72,16 +71,20 @@ void _forkIt(char *str)
 		{
 			write(STDERR_FILENO, gg[0], _strlen(gg[0]));
 			write(STDERR_FILENO, ": No such file or directory found \n", 36);
+			free(gg);
+			free(str);
 			exit(1);
 		}
 	}
 	if (pid > 0)
 	{
-		if (_strcmp(str, e) == 0)
+/*		if (_strcmp(str, e) == 0)
 		{
+			free(gg);
+			free(str);
 			exit(1);
 		}
-		wait(&status);
+*/		wait(&status);
 	}
 }
 /**

@@ -11,10 +11,10 @@
 int main(void)
 {
 	char *buf = NULL;
-	char *e = "exit";
+	char *e = "exit\n";
 	size_t l = 0;
 	ssize_t c = 0;
-	char *env = "env";
+	char *env = "env\n";
 
 	while (1)
 	{

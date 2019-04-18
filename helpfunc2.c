@@ -14,7 +14,7 @@ char *_strdup(char *org)
 	static char *dup;
 	char *dup_offset;
 
-	org_size = strlen(org);
+	org_size = _strlen(org);
 	dup = (char *)malloc(sizeof(char) * org_size + 1);
 	if (dup == NULL)
 		return ((char *)NULL);
@@ -86,7 +86,7 @@ char *pathString(void)
 	ev = malloc(sizeof(char *) * 100);
 	while (environ[j] != NULL)
 	{
-		ev[j] = strdup(environ[j]);
+		ev[j] = _strdup(environ[j]);
 		j++;
 	}
 	getPath = _parseline(ev[i], "=");
