@@ -78,13 +78,7 @@ void _forkIt(char *str)
 	}
 	if (pid > 0)
 	{
-/*		if (_strcmp(str, e) == 0)
-		{
-			free(gg);
-			free(str);
-			exit(1);
-		}
-*/		wait(&status);
+		wait(&status);
 	}
 }
 /**
