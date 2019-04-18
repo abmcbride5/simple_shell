@@ -18,7 +18,7 @@ int main(void)
 
 	while (1)
 	{
-		write(STDOUT_FILENO,"$ ", 2);
+		write(STDOUT_FILENO, "$ ", 2);
 		c = getline(&buf, &l, stdin);
 		if (c == -1)
 		{
