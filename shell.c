@@ -2,23 +2,27 @@
 /**
 *main - program that creates a prompt, recieves input and calls
 *forking function when needed.
-*
-*Return: Always zero 
+*Return: Always zero
 */
 int main(void)
 {
 	char *buf = NULL;
 	char *e = "exit\n";
+	char *env = "env\n";
 	size_t l = 0;
 	ssize_t c = 0;
-	char *env = "env\n";
+	int i = 0;
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		i = isatty(STDIN_FILENO);
+		if (i == 1)
+			write(STDOUT_FILENO, "$ ", 2);
 		c = getline(&buf, &l, stdin);
 		if (c == -1)
 		{
+			if (i == 1)
+				write(STDOUT_FILENO, "\n", 1);
 			free(buf);
 			exit(1);
 		}
