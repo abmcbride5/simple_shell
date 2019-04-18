@@ -8,7 +8,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-
 int _putchar(char c);
 char **_parseline(char *buf, char *delim);
 int _strcmp(char *str1, char *str2);
