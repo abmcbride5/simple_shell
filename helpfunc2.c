@@ -91,7 +91,7 @@ char *pathString(void)
 	{
 		getPath = _parseline(ev[i], "=");
 		getPath = _parseline(NULL, ev[i]);
-		if (_strcmp(ev[i], path) == 0)
+		if (_strcmp(getPath[i], path) == 0)
 		{
 			free(ev);
 			return (environ[i]);
