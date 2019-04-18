@@ -22,10 +22,12 @@ int main(void)
 		c = getline(&buf, &l, stdin);
 		if (c == -1)
 		{
+			free(buf);
 			exit(1);
 		}
 		if (_strcmp(buf, e) == 0)
 		{
+			free(buf);
 			exit(1);
 		}
 		if (_strcmp(buf, env) == 0)
