@@ -1,12 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "shell.h"
 /**
 *main - program that creates a prompt, recieves input and calls
 *forking function when needed.
 *
-*Return: void
+*Return: Always zero 
 */
 int main(void)
 {
