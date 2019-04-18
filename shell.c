@@ -24,12 +24,12 @@ int main(void)
 			if (i == 1)
 				write(STDOUT_FILENO, "\n", 1);
 			free(buf);
-			exit(1);
+			exit(0);
 		}
 		if (_strcmp(buf, e) == 0)
 		{
 			free(buf);
-			exit(1);
+			exit(0);
 		}
 		if (_strcmp(buf, env) == 0)
 			printenv();
