@@ -21,5 +21,6 @@ int _strlen(char *s);
 void printenv(void);
 char *_strdup(char *org);
 char *_strcat(char *destination, const char *source, size_t num);
+extern char **environ;
 
 #endif
