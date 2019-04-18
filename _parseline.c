@@ -13,13 +13,16 @@
 */
 char **_parseline(char *buf, char *delim)
 {
-	int i;
+	int i, c;
 	char *tokens;
 	char **args;
+	char *buffer;
 
+	buffer = buf;
 	i = 0;
 	tokens = strtok(buf, delim);
-	args = malloc(sizeof(char*));
+	c = _counter(buffer, delim);
+	args = malloc(sizeof(char*) * (c + 1));
 	while(tokens)
 	{
 		args[i] = tokens;
@@ -27,5 +30,6 @@ char **_parseline(char *buf, char *delim)
 		i++;
 	}
 	args[i] = NULL;
+	free(args);
 	return (args);
 }
