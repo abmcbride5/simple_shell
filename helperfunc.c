@@ -73,7 +73,7 @@ void _forkIt(char *str)
 			write(STDERR_FILENO, ": No such file or directory found \n", 36);
 			free(gg);
 			free(str);
-			exit(1);
+			exit(0);
 		}
 	}
 	if (pid > 0)
