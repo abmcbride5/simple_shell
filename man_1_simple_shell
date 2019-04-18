@@ -4,11 +4,16 @@ sh - a command programming language that executes commands read from a terminal 
 .SH SYNOPSIS
 Simple Shell
 .SH DESCRIPTION
-A shell is a program which provides a user interface. Users can type in commands and run programs on a Unix system.T he main function a shell performs is to read in from the terminal what one types, run the commands, and show the output of the commands.
+Our shell is a program that provides a user interface. Users can type in commands and run programs.The main function a shell performs is to read in from the terminal what one types, run the commands, and show the output of the commands.
 .SH FLAGS
-ls
+ls - listing all files in normal form
 
-.SH SEE ALSO
+ls -l - listing all files in long form
+
+env - displaying the enviroment for our shell
+
+exit - command to stop and exit our shell
+
 .SH BUGS
 No known bugs.
 .SH AUTHORS
