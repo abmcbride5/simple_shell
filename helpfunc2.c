@@ -45,7 +45,7 @@ char *_strdup(char *org)
 
 char *_strcat(char *destination, const char *source, size_t num)
 {
-	char  *ptr = destination + strlen(destination);
+	char  *ptr = destination + _strlen(destination);
 
 	while (*source != '\0' && num--)
 		*ptr++ = *source++;
@@ -65,7 +65,7 @@ void printenv(void)
 	i = 0;
 	while (environ[i] != NULL)
 	{
-		sl = strlen(environ[i]);
+		sl = _strlen(environ[i]);
 		write(STDOUT_FILENO, environ[i], (sl + 1));
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
