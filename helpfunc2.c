@@ -26,6 +26,12 @@ char *_strdup(char *org)
 		dup_offset++;
 		org++;
 	}
+
+	{
+		if (org == NULL)
+		return (0);
+	}
+
 	*dup_offset = '\0';
 
 	return (dup);

@@ -40,6 +40,10 @@ char **_parseline(char *buf, char *delim)
 	i = 0;
 	tokens = strtok(buf, delim);
 	args = malloc(sizeof(char *) * 1024);
+	{
+	if (args == NULL)
+		return (0);
+	}
 	while (tokens)
 	{
 		args[i] = tokens;
